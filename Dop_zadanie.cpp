@@ -37,7 +37,7 @@ struct node* Q_get_struct(void)
 	return p;		// возвращаем указатель на созданный элемент
 }
 
-/* ѕоследовательное добавление в очередь элемента (в начало)*/
+/* ѕоследовательное добавление в очередь элемента (в конец)*/
 void queue_push(void)
 {
 	struct node* p = NULL;
@@ -47,7 +47,7 @@ void queue_push(void)
 		Qhead = p;
 		Qlast = p;
 	}
-	else if (Qhead != NULL && p != NULL) // список уже есть, то вставл€ем в начало
+	else if (Qhead != NULL && p != NULL) // список уже есть, то вставл€ем в конец
 	{
 		p->next = Qhead;
 		Qhead = p;
@@ -55,7 +55,7 @@ void queue_push(void)
 	return;
 }
 
-/* ѕоследовательное удаление из очереди (из конца)*/
+/* ѕоследовательное удаление из очереди (из начала)*/
 void queue_pop() {
 	struct node* sch = Qhead;
 

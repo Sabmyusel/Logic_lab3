@@ -37,7 +37,7 @@ struct node* S_get_struct(void)
 	return p;		// возвращаем указатель на созданный элемент
 }
 
-/* ѕоследовательное добавление в стек элемента (в начало)*/
+/* ѕоследовательное добавление в стек элемента (в вершину)*/
 void stack_push(void)
 {
 	struct node* p = NULL;
@@ -47,7 +47,7 @@ void stack_push(void)
 		Shead = p;
 		Slast = p;
 	}
-	else if (Shead != NULL && p != NULL) // список уже есть, то вставл€ем в начало
+	else if (Shead != NULL && p != NULL) // список уже есть, то вставл€ем в вершину
 	{
 		p->next = Shead;
 		Shead = p;
@@ -55,7 +55,7 @@ void stack_push(void)
 	return;
 }
 
-/* ѕоследовательное удаление из стека (из начала)*/
+/* ѕоследовательное удаление из стека (из вершины)*/
 void stack_pop() {
 
 	if (Shead == NULL) {

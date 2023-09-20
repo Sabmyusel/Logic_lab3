@@ -31,7 +31,7 @@ struct node* get_struct(void)
 
 	printf("Введите название объекта: \n");   // вводим данные
 	scanf("%s", s);
-	printf("Введите приоритет объекта: \n");   // вводим данные
+	printf("Введите приоритет объекта: \n");   // вводим приоритет
 	scanf("%d", &pr);
 	if (*s == 0 || pr == 0)
 	{
@@ -63,7 +63,7 @@ void spstore(void)
 			prev = srch;
 			srch = srch->next;
 		}
-		if (head == srch && p->prior <= head->prior) {// если нужно добавить в начало списка
+		if (head == srch && p->prior <= srch->prior) {// если нужно добавить в начало списка
 			p->next = head;
 			head = p;
 		}
@@ -137,9 +137,11 @@ void del(char* name)
 		free(struc);  // удаляем первый элемент
 		struc = head; // устанавливаем указатель для продолжения поиска
 		prev = NULL;
+		dlinna--;
 	}
 	else
 	{
+		dlinna--;
 		prev = struc;
 		struc = struc->next;
 	}
@@ -157,6 +159,7 @@ void del(char* name)
 			}
 			else			// если найденный элемент последний в списке
 			{
+				last = prev;
 				prev->next = NULL; // обнуляем указатель предшествующего элемента
 				free(struc);	// удаляем  элемент
 				return;
@@ -211,6 +214,8 @@ void start() {
 			printf("Введите название объекта, который хотите удалить: \n");
 			scanf("%s", find_el);
 			del(find_el);
+			printf("Объект удалён\n");
+			system("pause");
 			system("cls");
 			break;
 		case 0:
